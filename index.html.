@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bill & Rebeca | Nuestra Boda</title>
+
+<style>
+:root{
+--cream:#f8f1e6;
+--cream2:#eee2d1;
+--blue:#b9d1d8;
+--blue2:#dce9eb;
+--blueDark:#617c86;
+--brown:#594a41;
+--brown2:#806d61;
+--white:#fffdf8;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+background:var(--cream);
+color:var(--brown);
+font-family:Georgia,"Times New Roman",serif;
+line-height:1.7;
+overflow-x:hidden;
+}
+
+/* FLORES */
+
+.floral{
+position:absolute;
+width:170px;
+height:210px;
+opacity:.45;
+pointer-events:none;
+}
+
+.floral.left{left:-30px;top:20px}
+.floral.right{right:-30px;bottom:20px;transform:scaleX(-1)}
+
+.stem{
+position:absolute;
+width:3px;
+height:175px;
+background:var(--blueDark);
+left:80px;
+top:20px;
+transform:rotate(20deg);
+border-radius:50%;
+}
+
+.leaf{
+position:absolute;
+width:38px;
+height:18px;
+background:var(--blue);
+border-radius:100% 0 100% 0;
+}
+
+.leaf1{left:48px;top:55px;transform:rotate(-30deg)}
+.leaf2{left:90px;top:82px;transform:rotate(30deg)}
+.leaf3{left:40px;top:115px;transform:rotate(-25deg)}
+.leaf4{left:92px;top:140px;transform:rotate(25deg)}
+
+.flower{
+position:absolute;
+width:28px;
+height:28px;
+border-radius:50%;
+background:var(--blue2);
+box-shadow:
+0 -10px 0 var(--blue2),
+10px 0 0 var(--blue2),
+0 10px 0 var(--blue2),
+-10px 0 0 var(--blue2);
+}
+
+.flower:after{
+content:"";
+position:absolute;
+width:8px;
+height:8px;
+background:var(--brown2);
+border-radius:50%;
+top:10px;
+left:10px;
+}
+
+.flower1{top:25px;left:72px}
+.flower2{top:92px;left:110px;transform:scale(.7)}
+.flower3{top:145px;left:45px;transform:scale(.6)}
+
+/* SOBRE */
+
+.envelope{
+position:fixed;
+inset:0;
+z-index:9999;
+background:
+radial-gradient(circle at 15% 15%,rgba(185,209,216,.55),transparent 25%),
+radial-gradient(circle at 85% 85%,rgba(185,209,216,.55),transparent 25%),
+var(--cream);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+transition:opacity 1s ease,visibility 1s ease;
+}
+
+.envelope.hide{
+opacity:0;
+visibility:hidden;
+}
+
+.envelope-box{
+width:90%;
+max-width:520px;
+padding:65px 30px;
+background:rgba(255,253,248,.82);
+border:1px solid rgba(89,74,65,.2);
+position:relative;
+box-shadow:0 20px 60px rgba(89,74,65,.15);
+}
+
+.envelope-small{
+font-size:11px;
+letter-spacing:5px;
+text-transform:uppercase;
+margin-bottom:25px;
+}
+
+.envelope h1{
+font-size:55px;
+font-weight:normal;
+margin-bottom:18px;
+}
+
+.envelope p{
+font-style:italic;
+font-size:17px;
+margin-bottom:35px;
+}
+
+.open-button,
+.music-button,
+.gift-button{
+border:0;
+background:var(--blueDark);
+color:white;
+padding:15px 30px;
+border-radius:40px;
+letter-spacing:2px;
+font-size:10px;
+cursor:pointer;
+}
+
+/* PORTADA */
+
+.hero{
+min-height:100vh;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+background:
+linear-gradient(
+rgba(185,209,216,.55),
+rgba(248,241,230,.72)
+),
+url("7bec5c25-cff3-4403-b15c-b29ae0cf1956.jpeg")
+center/cover no-repeat;
+}
+
+.hero-inner{
+position:relative;
+z-index:2;
+padding:40px 25px;
+max-width:850px;
+}
+
+.hero-small{
+font-size:11px;
+letter-spacing:7px;
+text-transform:uppercase;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:74px;
+font-weight:normal;
+letter-spacing:4px;
+}
+
+.hero-date{
+font-size:18px;
+letter-spacing:8px;
+margin-top:15px;
+}
+
+.hero-line{
+width:80px;
+height:1px;
+background:var(--brown);
+margin:30px auto;
+}
+
+.hero-verse{
+font-size:17px;
+font-style:italic;
+}
+
+.discover{
+display:inline-block;
+margin-top:50px;
+color:var(--brown);
+text-decoration:none;
+letter-spacing:3px;
+font-size:10px;
+text-transform:uppercase;
+}
+
+/* SECCIONES */
+
+section{
+position:relative;
+max-width:1000px;
+margin:auto;
+padding:100px 25px;
+}
+
+.section-label{
+text-align:center;
+color:var(--blueDark);
+font-size:10px;
+letter-spacing:4px;
+text-transform:uppercase;
+margin-bottom:15px;
+}
+
+.section-title{
+text-align:center;
+font-size:40px;
+font-weight:normal;
+margin-bottom:25px;
+}
+
+.section-text{
+max-width:680px;
+margin:auto;
+text-align:center;
+font-size:18px;
+line-height:1.9;
+}
+
+/* HISTORIA */
+
+.photo-large{
+max-width:700px;
+margin:55px auto 0;
+}
+
+.photo-large img{
+display:block;
+width:100%;
+max-height:650px;
+object-fit:cover;
+border-radius:5px;
+box-shadow:0 18px 45px rgba(89,74,65,.13);
+}
+
+.photo-caption{
+text-align:center;
+margin-top:15px;
+font-style:italic;
+color:var(--brown2);
+}
+
+/* FRASE */
+
+.quote{
+max-width:none;
+background:
+radial-gradient(circle at 15% 20%,rgba(255,255,255,.5),transparent 20%),
+radial-gradient(circle at 85% 80%,rgba(255,255,255,.5),transparent 20%),
+var(--blue);
+text-align:center;
+}
+
+.quote p{
+max-width:700px;
+margin:auto;
+font-size:28px;
+font-style:italic;
+line-height:1.6;
+}
+
+.quote small{
+display:block;
+margin-top:25px;
+letter-spacing:4px;
+}
+
+/* CONTADOR */
+
+.countdown-section{
+max-width:none;
+text-align:center;
+background:var(--cream2);
+}
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.time{
+min-width:90px;
+background:var(--white);
+padding:20px 12px;
+box-shadow:0 8px 25px rgba(89,74,65,.08);
+}
+
+.time span{
+display:block;
+font-size:34px;
+color:var(--blueDark);
+}
+
+.time small{
+font-family:Arial,sans-serif;
+text-transform:uppercase;
+letter-spacing:2px;
+font-size:9px;
+}
+
+/* EVENTOS */
+
+.events{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-top:45px;
+}
+
+.event{
+background:var(--white);
+padding:50px 25px;
+text-align:center;
+border:1px solid rgba(89,74,65,.12);
+box-shadow:0 12px 35px rgba(89,74,65,.07);
+}
+
+.event-icon{
+font-size:29px;
+margin-bottom:15px;
+}
+
+.event h3{
+font-size:27px;
+font-weight:normal;
+color:var(--blueDark);
+margin-bottom:15px;
+}
+
+.event p{
+line-height:1.8;
+}
+
+.map{
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+border-radius:30px;
+background:var(--blueDark);
+color:white;
+text-decoration:none;
+font-family:Arial,sans-serif;
+font-size:10px;
+letter-spacing:2px;
+}
+
+/* CRONOGRAMA */
+
+.timeline{
+max-width:620px;
+margin:45px auto 0;
+}
+
+.timeline-item{
+display:flex;
+gap:25px;
+padding:25px 0;
+border-bottom:1px solid rgba(89,74,65,.15);
+}
+
+.timeline-time{
+min-width:85px;
+color:var(--blueDark);
+font-size:17px;
+}
+
+.timeline-text{
+text-align:left;
+}
+
+.timeline-text strong{
+display:block;
+font-size:19px;
+}
+
+/* VESTIMENTA */
+
+.dress{
+max-width:none;
+background:
+radial-gradient(circle at 10% 20%,rgba(255,255,255,.5),transparent 18%),
+radial-gradient(circle at 90% 80%,rgba(255,255,255,.5),transparent 18%),
+var(--blue2);
+text-align:center;
+}
+
+.dress-box{
+max-width:760px;
+margin:auto;
+background:rgba(255,253,248,.75);
+padding:55px 30px;
+box-shadow:0 15px 45px rgba(89,74,65,.08);
+}
+
+.dress-main{
+font-size:32px;
+color:var(--blueDark);
+letter-spacing:3px;
+margin-bottom:25px;
+}
+
+.dress-columns{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin:30px 0;
+}
+
+.dress-card{
+background:var(--cream);
+padding:25px;
+}
+
+.dress-card h3{
+font-weight:normal;
+margin-bottom:10px;
+}
+
+.avoid{
+padding-top:25px;
+border-top:1px solid rgba(89,74,65,.15);
+}
+
+/* GALERIA */
+
+.gallery{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:12px;
+margin-top:45px;
+}
+
+.gallery img{
+width:100%;
+height:270px;
+object-fit:cover;
+}
+
+.gallery img:first-child{
+height:552px;
+grid-row:span 2;
+}
+<style>
+/* MUSICA */
+
+.music{
+max-width:none;
+text-align:center;
+background:var(--cream2);
+}
+
+.music-button{
+margin-top:25px;
+}
+
+/* MESA DE REGALOS */
+
+.gifts{
+max-width:none;
+text-align:center;
+background:
+radial-gradient(circle at 10% 20%,rgba(255,255,255,.5),transparent 18%),
+radial-gradient(circle at 90% 80%,rgba(255,255,255,.5),transparent 18%),
+var(--blue2);
+}
+
+.gift-box{
+max-width:700px;
+margin:auto;
+background:rgba(255,253,248,.86);
+padding:55px 30px;
+box-shadow:0 15px 45px rgba(89,74,65,.08);
+}
+
+.gift-icon{
+font-size:38px;
+margin-bottom:15px;
+}
+
+.gift-button{
+margin-top:30px;
+transition:.3s;
+}
+
+.gift-details{
+max-height:0;
+overflow:hidden;
+transition:max-height .7s ease;
+text-align:left;
+}
+
+.gift-details.open{
+max-height:700px;
+margin-top:30px;
+}
+
+.gift-option{
+background:var(--cream);
+padding:25px;
+margin-top:15px;
+border-left:3px solid var(--blueDark);
+}
+
+.gift-option h3{
+color:var(--blueDark);
+font-size:20px;
+font-weight:normal;
+margin-bottom:10px;
+}
+
+.gift-data{
+font-family:Arial,sans-serif;
+font-size:14px;
+line-height:1.9;
+}
+
+.gift-note{
+text-align:center;
+margin-top:25px;
+font-style:italic;
+}
+
+/* CONFIRMACION */
+
+.confirm{
+max-width:none;
+text-align:center;
+background:var(--blue);
+}
+
+.whatsapp{
+display:inline-block;
+margin-top:30px;
+padding:16px 35px;
+border-radius:35px;
+background:var(--brown);
+color:white;
+text-decoration:none;
+font-family:Arial,sans-serif;
+letter-spacing:2px;
+font-size:10px;
+}
+
+/* FINAL */
+
+footer{
+position:relative;
+overflow:hidden;
+background:var(--brown);
+color:var(--cream);
+text-align:center;
+padding:95px 20px;
+}
+
+footer h2{
+font-size:50px;
+font-weight:normal;
+margin-bottom:15px;
+}
+
+footer p{
+letter-spacing:4px;
+}
+
+/* MOVIL */
+
+@media(max-width:700px){
+
+.hero h1{
+font-size:49px;
+}
+
+.hero-date{
+letter-spacing:5px;
+}
+
+section{
+padding:75px 20px;
+}
+
+.section-title{
+font-size:32px;
+}
+
+.quote p{
+font-size:23px;
+}
+
+.events{
+grid-template-columns:1fr;
+}
+
+.dress-columns{
+grid-template-columns:1fr;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.gallery img,
+.gallery img:first-child{
+height:320px;
+grid-row:auto;
+}
+
+.envelope h1{
+font-size:44px;
+}
+
+.gift-box{
+padding:45px 20px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- SOBRE -->
+
+<div class="envelope" id="envelope">
+
+<div class="envelope-box">
+
+<div class="floral left">
+
+<div class="stem"></div>
+<div class="leaf leaf1"></div>
+<div class="leaf leaf2"></div>
+<div class="leaf leaf3"></div>
+
+<div class="flower flower1"></div>
+<div class="flower flower2"></div>
+
+</div>
+
+<div class="envelope-small">
+Una invitación especial
+</div>
+
+<h1>
+Bill & Rebeca
+</h1>
+
+<p>
+Tenemos el honor de invitarte
+a celebrar nuestro gran día.
+</p>
+
+<button
+class="open-button"
+onclick="openInvitation()">
+
+ABRIR INVITACIÓN
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PORTADA -->
+
+<header class="hero">
+
+<div class="hero-inner">
+
+<div class="hero-small">
+Nuestra boda
+</div>
+
+<h1>
+Bill & Rebeca
+</h1>
+
+<div class="hero-date">
+21 · 09 · 2026
+</div>
+
+<div class="hero-line"></div>
+
+<div class="hero-verse">
+
+“Lo que Dios ha unido,
+no lo separe el hombre.”
+
+<br>
+
+Mateo 19:6
+
+</div>
+
+<a
+class="discover"
+href="#historia">
+
+Descubre nuestra historia ↓
+
+</a>
+
+</div>
+
+</header>
+
+
+<!-- HISTORIA -->
+
+<section id="historia">
+
+<div class="floral left">
+
+<div class="stem"></div>
+<div class="leaf leaf1"></div>
+<div class="leaf leaf2"></div>
+<div class="leaf leaf3"></div>
+<div class="leaf leaf4"></div>
+
+<div class="flower flower1"></div>
+<div class="flower flower2"></div>
+<div class="flower flower3"></div>
+
+</div>
+
+<div class="section-label">
+Nuestra historia
+</div>
+
+<h2 class="section-title">
+Un amor escrito por Dios
+</h2>
+
+<p class="section-text">
+
+Con mucha alegría queremos compartir contigo
+uno de los días más importantes de nuestras vidas.
+Dios nos permitió encontrarnos y hoy damos un nuevo
+paso juntos, poniendo nuestra historia en Sus manos.
+
+</p>
+
+<div class="photo-large">
+
+<img
+src="87122bd5-2127-4293-b299-9a8a6d0a8c97.jpeg"
+alt="Bill y Rebeca">
+
+<div class="photo-caption">
+Nuestra historia comienza aquí...
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FRASE -->
+
+<section class="quote">
+
+<p>
+
+“Dos historias, un camino,
+una promesa y Dios en el centro de todo.”
+
+</p>
+
+<small>
+BILL & REBECA
+</small>
+
+</section>
+
+
+<!-- FE -->
+
+<section>
+
+<div class="section-label">
+Nuestra fe
+</div>
+
+<h2 class="section-title">
+Dios en nuestra historia
+</h2>
+
+<p class="section-text">
+
+“Cordón de tres dobleces no se rompe pronto.”
+
+<br><br>
+
+<strong>
+Eclesiastés 4:12
+</strong>
+
+<br><br>
+
+Queremos comenzar esta nueva etapa
+con Dios como fundamento de nuestro hogar,
+confiando en Su amor, Su dirección
+y Su propósito para nuestras vidas.
+
+</p>
+
+</section>
+
+
+<!-- CONTADOR -->
+
+<section class="countdown-section">
+
+<div class="section-label">
+Nuestro gran día
+</div>
+
+<h2 class="section-title">
+Falta muy poco
+</h2>
+
+<p>
+para celebrar juntos este momento.
+</p>
+
+<div class="countdown">
+
+<div class="time">
+
+<span id="days">
+0
+</span>
+
+<small>
+Días
+</small>
+
+</div>
+
+<div class="time">
+
+<span id="hours">
+0
+</span>
+
+<small>
+Horas
+</small>
+
+</div>
+
+<div class="time">
+
+<span id="minutes">
+0
+</span>
+
+<small>
+Minutos
+</small>
+
+</div>
+
+<div class="time">
+
+<span id="seconds">
+0
+</span>
+
+<small>
+Segundos
+</small>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EVENTOS -->
+
+<section>
+
+<div class="section-label">
+21 · 09 · 2026
+</div>
+
+<h2 class="section-title">
+Nuestro gran día
+</h2>
+
+<p class="section-text">
+
+Queremos que seas parte de esta celebración
+tan especial.
+
+</p>
+
+<div class="events">
+
+<div class="event">
+
+<div class="event-icon">
+✝️
+</div>
+
+<h3>
+Ceremonia religiosa
+</h3>
+
+<p>
+
+<strong>
+4:00 p. m.
+</strong>
+
+<br><br>
+
+Jirón Coronel Zubiaga 187
+
+<br>
+
+Cercado de Lima
+
+</p>
+
+<a
+class="map"
+href="https://www.google.com/maps/search/?api=1&query=Jir%C3%B3n+Coronel+Zubiaga+187+Cercado+de+Lima"
+target="_blank">
+
+VER UBICACIÓN
+
+</a>
+
+</div>
+
+
+<div class="event">
+
+<div class="event-icon">
+🥂
+</div>
+
+<h3>
+Recepción
+</h3>
+
+<p>
+
+Al finalizar la ceremonia
+
+<br><br>
+
+<strong>
+En el mismo lugar
+</strong>
+
+<br><br>
+
+Jirón Coronel Zubiaga 187
+
+<br>
+
+Cercado de Lima
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CRONOGRAMA -->
+
+<section>
+
+<div class="section-label">
+Celebremos juntos
+</div>
+
+<h2 class="section-title">
+Así será nuestro día
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<div class="timeline-time">
+4:00 p. m.
+</div>
+
+<div class="timeline-text">
+
+<strong>
+Ceremonia religiosa
+</strong>
+
+Un momento para celebrar
+nuestra unión delante de Dios.
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-time">
+Después
+</div>
+
+<div class="timeline-text">
+
+<strong>
+Recepción
+</strong>
+
+Compartiremos juntos
+comida, alegría y buenos momentos.
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-time">
+❤️
+</div>
+
+<div class="timeline-text">
+
+<strong>
+Celebramos nuestro amor
+</strong>
+
+Queremos disfrutar este día
+junto a las personas que amamos.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VESTIMENTA -->
+
+<section class="dress">
+
+<div class="dress-box">
+
+<div class="section-label">
+Dress code
+</div>
+
+<h2 class="section-title">
+Código de vestimenta
+</h2>
+
+<div class="dress-main">
+FORMAL
+</div>
+
+<div class="dress-columns">
+
+<div class="dress-card">
+
+<h3>
+🤵 Caballeros
+</h3>
+
+<p>
+Traje o vestimenta formal
+y zapatos de vestir.
+</p>
+
+</div>
+
+
+<div class="dress-card">
+
+<h3>
+👗 Damas
+</h3>
+
+<p>
+Vestido elegante
+y acorde a la ocasión.
+</p>
+
+</div>
+
+</div>
+
+<div class="avoid">
+
+<strong>
+Una pequeña consideración
+</strong>
+
+<p>
+
+Para mantener la armonía y elegancia
+de nuestra celebración, agradecemos evitar
+zapatillas deportivas o de colores llamativos,
+así como vestidos en tonos neón
+o excesivamente vibrantes.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GALERIA -->
+
+<section>
+
+<div class="section-label">
+Recuerdos
+</div>
+
+<h2 class="section-title">
+Nuestros momentos
+</h2>
+
+<p class="section-text">
+Algunas fotografías de nuestra historia.
+</p>
+
+<div class="gallery">
+
+<img
+src="IMG_1812.jpeg"
+alt="Bill y Rebeca">
+
+<img
+src="IMG_8940.jpeg"
+alt="Bill y Rebeca">
+
+<img
+src="ba963e7e-6161-4003-8241-91327bca444e.jpeg"
+alt="Bill y Rebeca">
+
+<img
+src="80bf4dc0-0e31-4b84-ba57-766af7cf1c2d.jpeg"
+alt="Bill y Rebeca">
+
+<img
+src="IMG_2904.jpeg"
+alt="Bill y Rebeca">
+
+</div>
+
+</section>
+<!-- MUSICA -->
+
+<section class="music">
+
+<div class="section-label">
+Nuestra canción
+</div>
+
+<h2 class="section-title">
+Un momento para recordar
+</h2>
+
+<p>
+Perfect — Kevin Karla & La Banda
+</p>
+
+<audio
+id="music"
+src="musica/cancion.mp3">
+</audio>
+
+<button
+class="music-button"
+onclick="toggleMusic()"
+id="musicButton">
+
+♫ ESCUCHAR NUESTRA CANCIÓN
+
+</button>
+
+</section>
+
+
+<!-- MESA DE REGALOS -->
+
+<section class="gifts">
+
+<div class="gift-box">
+
+<div class="gift-icon">
+🎁
+</div>
+
+<div class="section-label">
+Mesa de regalos
+</div>
+
+<h2 class="section-title">
+Tu presencia es nuestro mejor regalo
+</h2>
+
+<p class="section-text">
+
+Si deseas tener un detalle con nosotros,
+puedes elegir una de estas opciones.
+
+</p>
+
+<button
+class="gift-button"
+onclick="toggleGifts()"
+id="giftButton">
+
+VER DATOS PARA REGALO
+
+</button>
+
+
+<div
+class="gift-details"
+id="giftDetails">
+
+
+<div class="gift-option">
+
+<h3>
+🎁 Regalo en efectivo
+</h3>
+
+<p>
+Para ayudarnos a comenzar
+esta nueva etapa juntos.
+</p>
+
+</div>
+
+
+<div class="gift-option">
+
+<h3>
+📱 Yape / Plin
+</h3>
+
+<div class="gift-data">
+
+<strong>
+Número:
+</strong>
+
+921 788 307
+
+</div>
+
+</div>
+
+
+<div class="gift-option">
+
+<h3>
+🏦 Transferencia bancaria
+</h3>
+
+<div class="gift-data">
+
+<strong>
+Banco:
+</strong>
+
+INTERBANK
+
+<br>
+
+<strong>
+Número de cuenta:
+</strong>
+
+898-3511395463
+
+<br>
+
+<strong>
+CCI:
+</strong>
+
+003-898-013511395463-44
+
+</div>
+
+</div>
+
+
+<div class="gift-option">
+
+<h3>
+💌 Sobre de regalo
+</h3>
+
+<p>
+
+También puedes entregarlo personalmente
+el día de nuestra boda.
+
+</p>
+
+</div>
+
+
+<p class="gift-note">
+
+Gracias por acompañarnos y ser parte
+de este momento tan especial. ❤️
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONFIRMACION -->
+
+<section class="confirm">
+
+<div class="confirm-text">
+
+<div class="section-label">
+Tu presencia es importante
+</div>
+
+<h2 class="section-title">
+¿Nos acompañas?
+</h2>
+
+<p>
+
+Para nosotros será un honor contar contigo
+en este día tan especial.
+
+</p>
+
+<a
+class="whatsapp"
+href="https://wa.me/51921788307?text=Hola%20Bill%20y%20Rebeca%2C%20quiero%20confirmar%20mi%20asistencia%20a%20su%20boda."
+target="_blank">
+
+CONFIRMAR ASISTENCIA
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<footer>
+
+<div class="floral right">
+
+<div class="stem"></div>
+
+<div class="leaf leaf1"></div>
+<div class="leaf leaf2"></div>
+<div class="leaf leaf3"></div>
+<div class="leaf leaf4"></div>
+
+<div class="flower flower1"></div>
+<div class="flower flower2"></div>
+<div class="flower flower3"></div>
+
+</div>
+
+
+<h2>
+Bill & Rebeca
+</h2>
+
+<p>
+21 · 09 · 2026
+</p>
+
+<br>
+
+<p>
+Con amor y gratitud ❤️
+</p>
+
+</footer>
+
+
+<script>
+
+/* SOBRE */
+
+function openInvitation(){
+
+document
+.getElementById("envelope")
+.classList.add("hide");
+
+}
+
+
+/* CONTADOR */
+
+const weddingDate =
+new Date("September 21, 2026 16:00:00")
+.getTime();
+
+
+function updateCountdown(){
+
+const now =
+new Date().getTime();
+
+const distance =
+weddingDate - now;
+
+
+if(distance <= 0){
+
+document.getElementById("days").innerText="0";
+
+document.getElementById("hours").innerText="0";
+
+document.getElementById("minutes").innerText="0";
+
+document.getElementById("seconds").innerText="0";
+
+return;
+
+}
+
+
+const days =
+Math.floor(
+distance/(1000*60*60*24)
+);
+
+
+const hours =
+Math.floor(
+(distance%(1000*60*60*24))
+/
+(1000*60*60)
+);
+
+
+const minutes =
+Math.floor(
+(distance%(1000*60*60))
+/
+(1000*60)
+);
+
+
+const seconds =
+Math.floor(
+(distance%(1000*60))
+/
+1000
+);
+
+
+document.getElementById("days").innerText=days;
+
+document.getElementById("hours").innerText=hours;
+
+document.getElementById("minutes").innerText=minutes;
+
+document.getElementById("seconds").innerText=seconds;
+
+}
+
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+
+/* MUSICA */
+
+function toggleMusic(){
+
+const music =
+document.getElementById("music");
+
+const button =
+document.getElementById("musicButton");
+
+
+if(music.paused){
+
+music.play();
+
+button.innerText=
+"Ⅱ PAUSAR NUESTRA CANCIÓN";
+
+}else{
+
+music.pause();
+
+button.innerText=
+"♫ ESCUCHAR NUESTRA CANCIÓN";
+
+}
+
+}
+
+
+/* REGALOS */
+
+function toggleGifts(){
+
+const details =
+document.getElementById("giftDetails");
+
+const button =
+document.getElementById("giftButton");
+
+
+details.classList.toggle("open");
+
+
+if(details.classList.contains("open")){
+
+button.innerText=
+"OCULTAR DATOS PARA REGALO";
+
+}else{
+
+button.innerText=
+"VER DATOS PARA REGALO";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
